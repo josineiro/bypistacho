@@ -1,0 +1,135 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0;
+  background: transparent;
+}
+
+/* Óvalo decorativo superior rosa */
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 55.8%;
+  background: linear-gradient(135deg, rgba(255, 192, 203, 0.15) 0%, rgba(255, 182, 193, 0.2) 50%, rgba(255, 166, 177, 0.15) 100%);
+  border-radius: 50%;
+  top: -305px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero__video-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8rem;
+  z-index: 1;
+}
+
+.video-oval {
+  width: 90%;
+  height: 650px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ffc0cb 0%, #ffb6c1 50%, #ffa6b1 100%);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hero__title {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 900;
+  color: #FFD700;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  line-height: 1;
+}
+
+.hero__subtitle {
+  font-size: clamp(0.7rem, 1.5vw, 1.2rem);
+  font-weight: 300;
+  color: #D4A574;
+  letter-spacing: 0.2em;
+  margin: 0.5rem 0 0 0;
+  text-transform: uppercase;
+}
+
+/* Responsive para mobile - óvalo vertical */
+@media (max-width: 768px) {
+
+  .hero::before {
+    width: 800px;
+    height: 345px;
+    top: -260px;
+  }
+
+  .hero__video-container {
+    margin-top: 3rem;
+  }
+
+  .video-oval {
+    height: 770px;
+    max-width: 80%;
+		margin-top: 2.2rem;
+  }
+
+  .hero__text {
+    position: absolute;
+    top: 40%;
+  }
+
+  .hero__title {
+    font-size: clamp(1.5rem, 8vw, 3rem);
+  }
+
+  .hero__subtitle {
+    font-size: clamp(0.45rem, 2vw, 0.7rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .video-oval {
+    height: 770px;
+    max-width: 90%;
+  }
+
+  .hero::before {
+    width: 400px;
+    height: 250px;
+    top: -165px;
+  }
+
+  .hero__title {
+    font-size: clamp(1.2rem, 7vw, 2.5rem);
+  }
+
+  .hero__subtitle {
+    font-size: clamp(0.4rem, 1.8vw, 0.6rem);
+  }
+}
