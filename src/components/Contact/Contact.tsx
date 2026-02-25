@@ -14,11 +14,20 @@ const Contact = () => {
         </p>
 
         <div className="contact__info">
-          <span className="contact__text">✉ info@bypistacho.com</span>
+          <span className="contact__text">
+            <img src="/email.svg" alt="Email" className="contact__icon" />
+            info@bypistacho.com
+          </span>
 
-          <span className="contact__text">📷 @bypistacho</span>
+          <span className="contact__text">
+            <img src="/ig.svg" alt="Instagram" className="contact__icon" />
+            @bypistacho
+          </span>
 
-          <span className="contact__text">📱 +54 9 11 6505-7968</span>
+          <span className="contact__text">
+            <img src="/wpp.svg" alt="WhatsApp" className="contact__icon" />
+            +54 9 11 6505-7968
+          </span>
         </div>
 
         <div className="contact__footer">
