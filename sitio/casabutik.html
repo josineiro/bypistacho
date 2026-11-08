@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Campaña de lanzamiento · Casabutik · PISTACHO</title>
+<title>Lanzamiento 2025 · Casabutik · PISTACHO</title>
 <meta name="description" content="Lanzamiento de Casabutik (2025): tres cápsulas dirigidas por Ignacio Jabiú. Cómo una sala de teatro vacía se convirtió en un museo, con ayuda de IA.">
 <meta name="google-site-verification" content="7cxuxkGQ0vvo8-8Kz82ph5HEbZnYtk6XbQuOKbs1pxs">
 <link rel="canonical" href="https://bypistacho.com/casabutik">
 <meta property="og:url" content="https://bypistacho.com/casabutik">
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PISTACHO">
-<meta property="og:title" content="Campaña de lanzamiento · Casabutik · PISTACHO">
+<meta property="og:title" content="Lanzamiento 2025 · Casabutik · PISTACHO">
 <meta property="og:description" content="Lanzamiento de Casabutik (2025): tres cápsulas dirigidas por Ignacio Jabiú. Cómo una sala de teatro vacía se convirtió en un museo, con ayuda de IA.">
 <meta property="og:image" content="https://bypistacho.com/img/compartir.jpg">
 <meta property="og:image:width" content="1200">
@@ -42,11 +43,12 @@ a{color:inherit}
 .texto b{font-weight:500;color:var(--ink)}
 
 /* ---- barra ---- */
-.barra{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
-  padding:8px var(--gut);transition:opacity .4s}
+.barra{position:fixed;top:calc(var(--barra-c,41px) - 31px);height:62px;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;
+  padding:0 var(--gut);transition:opacity .4s}
 .barra img{height:20px;width:auto}
 .barra a{text-decoration:none;padding:12px 0}
 .barra .volver{font-weight:500}
+.barra .hablar{padding:0}
 
 /* ---- el comercial: corre mudo y sin reproductor, más chico que la pantalla; un clic lo abre entero y con sonido ---- */
 .film{padding:clamp(84px,12vh,118px) var(--gut) 0}
@@ -78,6 +80,9 @@ a{color:inherit}
 .ficha dt,.ficha dd{font-size:clamp(10.5px,.78vw,14px);text-transform:uppercase;letter-spacing:.14em;line-height:1.9}
 .ficha dt{color:rgba(255,255,255,.62)}
 .ficha dd{font-weight:500}
+.ficha dd span{display:block}     /* Nacho y Josué, 5/11: un nombre por línea, en la compu también, sin «·» ni «y» */
+@media(max-width:760px){
+  .ficha dl{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}}     /* un cargo largo (River: «Producción general y creatividad») ya no aprieta los nombres a una palabra por línea */
 .ver{margin-top:10px;display:inline-flex;gap:12px;background:none;border:0;border-bottom:1px solid #fff;color:#fff;padding:0 0 6px;
   cursor:pointer;font:inherit;font-weight:500;text-transform:uppercase;font-size:11px;letter-spacing:.2em;text-decoration:none}
 .ver:hover,.ver:focus-visible{color:var(--rojo);border-color:var(--rojo)}
@@ -89,8 +94,10 @@ a{color:inherit}
 .fotogramas .rotulo{margin-bottom:14px;color:var(--ink3)}
 
 /* ---- apertura del rodaje ---- */
-.apertura{padding:clamp(90px,16vh,190px) var(--gut) clamp(40px,7vh,80px);border-bottom:1px solid var(--linea)}
-.apertura h2{font-size:clamp(3rem,11vw,11rem)}
+/* Nacho y Josué, 5/11: la línea va arriba del título (separa la sección de los fotogramas) y no debajo; arriba y abajo del título, el mismo aire */
+.apertura{margin-top:clamp(56px,9vh,110px);padding:clamp(64px,11vh,130px) var(--gut) 0;border-top:1px solid var(--linea)}
+.cap + .apertura{margin-top:0;border-top:0}     /* después de los créditos la línea ya está (la de abajo de los créditos): no se duplica */
+.apertura h2{font-size:clamp(2.2rem,6vw,5.6rem)}     /* Nacho, 3/11: más chico */
 .apertura .texto{margin-top:22px}
 
 /* ---- capítulos: texto anclado a la izquierda, material que pasa a la derecha ---- */
@@ -136,6 +143,8 @@ figure video{aspect-ratio:16/9;object-fit:cover}   /* proporción fija: sin salt
 .verticales.chicos{max-width:460px}
 .verticales .plano{aspect-ratio:9/16}
 .capsulas .grilla.una{grid-template-columns:minmax(0,1fr);max-width:1240px}
+.capsulas.otro figcaption{margin-top:clamp(18px,2.6vw,34px)}     /* Nacho y Josué, 5/11: el título más separado del video */
+.capsulas.otro{text-align:center}.capsulas.otro .grilla.una{margin:0 auto}.capsulas.otro .texto{margin-left:auto;margin-right:auto}     /* Nacho, 3/11: centrado */
 .capsulas .texto{margin-top:6px}
 .capsulas figcaption{margin-top:12px;font-size:clamp(1.2rem,2.2vw,2rem)}
 .plano{display:block;position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#0b0b0b;border:0;padding:0;cursor:pointer}
@@ -221,6 +230,13 @@ figure.vertical video{aspect-ratio:9/16}
   .equipo{grid-template-columns:repeat(2,minmax(0,1fr))}
   .otros .fila{grid-template-columns:1fr}
 }
+/* Nacho y Josué, 5/11: en el teléfono el aire entre secciones era exagerado */
+@media(max-width:760px){
+  .cap{padding-top:52px;padding-bottom:52px}
+  .apertura{margin-top:48px;padding-top:52px}
+  .fotogramas{padding-top:52px}
+  .creditos-obra{margin-top:32px}
+}
 @media(max-width:520px){
   .dos{grid-template-columns:1fr}
   .equipo{grid-template-columns:1fr}
@@ -231,7 +247,7 @@ figure.vertical video{aspect-ratio:9/16}
 html.menu-abierto .barra .volver{opacity:0;pointer-events:none}
 
 /* ===== MENÚ (referencia: landia.com) — tres rayitas arriba a la derecha, panel negro a pantalla completa ===== */
-.burguer{position:fixed;top:6px;right:20px;z-index:90;width:48px;height:48px;padding:0;border:0;background:none;cursor:pointer;
+.burguer{position:fixed;top:calc(var(--barra-c,30px) - 24px);left:20px;z-index:90;width:48px;height:48px;padding:0;border:0;background:none;cursor:pointer;
   display:grid;place-items:center;mix-blend-mode:difference}
 .burguer span{display:block;width:26px;height:1.5px;background:#fff;transition:transform .45s cubic-bezier(.16,1,.3,1),opacity .25s}
 .burguer i{display:grid;gap:6px}
@@ -239,6 +255,7 @@ html.menu-abierto .barra .volver{opacity:0;pointer-events:none}
 .burguer.x span:nth-child(2){opacity:0}
 .burguer.x span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 html.menu-abierto{overflow:hidden}
+.menu:focus{outline:none !important}
 .menu{position:fixed;inset:0;z-index:85;background:#000;color:#fff;opacity:0;visibility:hidden;
   transition:opacity .45s ease,visibility 0s linear .45s;
   display:grid;grid-template-columns:minmax(0,34vw) minmax(0,1fr) minmax(170px,230px);gap:0 clamp(24px,3vw,56px);
@@ -256,6 +273,7 @@ html.menu-abierto{overflow:hidden}
 .menu .panel.on{display:grid}
 .menu .panel a,.menu .panel .dato{display:block;color:#fff;text-decoration:none;font-weight:500;text-transform:uppercase;letter-spacing:-.02em;
   font-size:clamp(1.5rem,3vw,3rem);line-height:1.08}
+.menu .panel[data-panel=trabajos] a{font-size:clamp(1.1rem,2.1vw,2.1rem);white-space:nowrap}     /* Nacho, 3/11: más chicos, en una línea */
 .menu .panel small{display:block;font-weight:300;font-size:11px;letter-spacing:.2em;opacity:.55;margin:6px 0 16px;text-transform:uppercase}
 .menu.abierto .panel.on li>*{animation:entra .7s cubic-bezier(.16,1,.3,1) backwards;animation-delay:calc(var(--i,0) * 55ms + 120ms)}
 .menu.abierto .panel.on li small{animation:entraSub .7s ease backwards;animation-delay:calc(var(--i,0) * 55ms + 200ms)}
@@ -292,6 +310,7 @@ html.menu-abierto{overflow:hidden}
   .menu .pestanas{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:12px 18px}
   .menu .previa{display:none}
   .menu .panel a,.menu .panel .dato{font-size:clamp(1.3rem,7vw,2rem)}
+  .menu .panel[data-panel=trabajos] a{font-size:clamp(1.05rem,5.4vw,1.6rem)}
 }
 @media(prefers-reduced-motion:reduce){.menu.abierto .panel.on li>*{animation-duration:.01s;animation-delay:0s}}
 
@@ -317,7 +336,7 @@ html.menu-abierto{overflow:hidden}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}   /* sólo para lectores de pantalla */
 
 /* ===== CIERRE: el isologo abajo, el plano entero arriba ===== */
-.final{position:relative;height:min(100svh,920px);min-height:480px;overflow:hidden;display:grid;place-items:end center}
+.final{position:relative;height:100vh;height:100dvh;min-height:480px;     /* Nacho, 3/11: ocupa toda la pantalla (antes tenía tope de 920 px y en el teléfono no contaba la barra del navegador) */overflow:hidden;display:grid;place-items:end center}
 .final video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0}   /* si la pantalla recorta, que sea abajo (va detrás del isologo): la cabeza del hombre toca el borde de arriba */
 .final .velo{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.84) 0%,rgba(0,0,0,.4) 36%,rgba(0,0,0,.12) 70%)}
 .marca-final{position:relative;width:100%;padding:0 var(--gut);margin:0 0 clamp(96px,15vh,150px);text-align:center}
@@ -342,7 +361,7 @@ html.modal{overflow:hidden}
 .box .epi{position:absolute;bottom:22px;left:26px;opacity:.7}
 
 /* ajustes sobre el menú heredado */
-.burguer{right:calc(var(--gut) - 11px);mix-blend-mode:normal}
+.burguer{left:calc(var(--gut) - 11px);right:auto;mix-blend-mode:normal}     /* Nacho, 3/11: a la izquierda; el logo al centro y WhatsApp a la derecha */
 html.claro:not(.menu-abierto) .burguer span{background:#111}
 .menu.abierto{animation:enfoca .5s ease}
 .menu .pie .reel:hover{color:var(--rojo)}
@@ -364,7 +383,7 @@ html.claro:not(.menu-abierto) .burguer:focus-visible{outline-color:#111 !importa
   .box.on video,.menu.abierto{animation:none}
 }
 @media(max-width:760px){
-  .final{height:100svh;min-height:520px}
+  .final{height:100vh;height:100dvh;min-height:520px}
   .marca-final{margin-bottom:190px}
   .datos-final{flex-direction:column;align-items:center;gap:0;bottom:22px;font-size:12px}
   .datos-final a{padding:9px 0}
@@ -374,8 +393,15 @@ html.claro:not(.menu-abierto) .burguer:focus-visible{outline-color:#111 !importa
 
 /* ===== ARRIBA (Nacho, 26/10): una capa oscura debajo del logo y el menú, el isotipo blanco que se pinta al pasar el mouse
    (no lleva a ningún lado) y «Hablá con nosotros» siempre a mano ===== */
-.capa-arriba{position:fixed;left:0;right:0;top:0;height:92px;z-index:48;pointer-events:none;transition:opacity .4s;
-  background:linear-gradient(to bottom,rgba(0,0,0,.88),rgba(0,0,0,.7) 40%,rgba(0,0,0,0))}     /* Nacho, 29/10: un poco más oscura */
+/* Nacho y Josué, 5/11: vuelve la capa de antes (de lado a lado, oscura arriba y que se esfuma), ahora con blur: lo de atrás se ve desenfocado.
+   Rite era la referencia del blur, no del diseño. No está al abrir la página: aparece cuando se scrollea (html.bajo, en comun.js).
+   El menú y WhatsApp quedan fijos desde el principio. (La barra flotante del 3/11, medida en riteskincare.com, quedó en el archivo) */
+:root{--barra-c:30px}     /* el centro vertical de la capa: ahí se alinean el menú, el logo y WhatsApp */
+.capa-arriba{position:fixed;left:0;right:0;top:0;height:92px;z-index:48;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:linear-gradient(to bottom,rgba(0,0,0,.88),rgba(0,0,0,.7) 40%,rgba(0,0,0,0));
+  -webkit-backdrop-filter:blur(15px);backdrop-filter:blur(15px);
+  -webkit-mask-image:linear-gradient(to bottom,#000 50%,transparent);mask-image:linear-gradient(to bottom,#000 50%,transparent)}     /* el blur también se esfuma, sin borde abajo */
+html.bajo .capa-arriba{opacity:1}
 /* sobre la banda clara de clientes la capa se vuelve clara, para que los logos que corren no se crucen con el menú */
 html.claro:not(.menu-abierto) .capa-arriba{background:linear-gradient(to bottom,rgba(244,244,242,.96),rgba(244,244,242,.86) 45%,rgba(244,244,242,0))}
 html.en-cierre .capa-arriba{opacity:0}
@@ -389,26 +415,30 @@ html.en-cierre .capa-arriba{opacity:0}
 .marca{display:flex;align-items:center}
 html.claro:not(.menu-abierto) .marca .iso .c{filter:none}
 .hablar{color:#fff;text-decoration:none;font-weight:500;white-space:nowrap;transition:color .3s,opacity .3s}
-.hablar:hover,.hablar:focus-visible{color:var(--rojo)}
-body > .hablar{position:fixed;top:21px;right:calc(var(--gut) + 50px);z-index:89}
+.hablar:hover,.hablar:focus-visible{color:#25D366}     /* Nacho y Josué, 5/11: verde WhatsApp, no rojo */
+body > .hablar{position:fixed;top:calc(var(--barra-c) - 20px);right:calc(var(--gut) - 8px);z-index:89}
+.hablar{display:grid;place-items:center;width:40px;height:40px}
+.hablar .wa{width:22px;height:22px;display:block}
 html.claro:not(.menu-abierto) body > .hablar{color:#111}
 html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
 .barra .izq,.barra .der{display:flex;align-items:center;gap:22px}
+.barra .izq{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}     /* Nacho, 3/11: el logo al centro */
 .barra .izq{gap:0}     /* Nacho, 29/10: el isotipo pegado a la palabra, igual que en la home */
-.barra .der{margin-right:50px}
+.barra .der{margin-left:auto;margin-right:-8px}
 @media(max-width:520px){
   .barra .volver{display:none}                 /* en el teléfono no entran las tres cosas: «volver» está en el menú y en el logo */
-  .hablar{letter-spacing:.04em;font-size:9.5px}
   .iso img{height:16px !important}
   .iso{margin-right:7px}
   .barra .lt,.marca .lt{height:14px !important}
-  .barra .der{margin-right:44px}
-  body > .hablar{right:calc(var(--gut) + 44px)}
+  .marca{top:calc(var(--barra-c) - 7px)}
 }
-@media(max-width:380px){
-  .hablar{white-space:normal;max-width:84px;line-height:1.25;text-align:right}    /* teléfonos angostos: en dos renglones, para que no pise el logo */
-  body > .hablar{top:16px}
-}
+
+
+/* Rolo, 3/11: en ningún teléfono queda una palabra sola en la última línea de un rótulo, un crédito o un epígrafe (los navegadores viejos lo ignoran y cortan como siempre) */
+.rotulo,dd,figcaption,small{text-wrap:balance}
+
+/* Rolo, 8/11: cuando un rubro tiene dos nombres en una línea de texto (River), van uno arriba del otro */
+.varios{font-style:normal;display:inline-flex;flex-direction:column;align-items:flex-start;text-align:left;vertical-align:top}
 
 /* ================= NOSOTROS =================
    La idea: debajo de cada nombre no hay bio, corre lo que filmó. Nacho adelante y con los planos grandes;
@@ -416,7 +446,7 @@ html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
 .gente{padding-top:clamp(84px,12vh,118px)}
 .persona{padding:0 var(--gut) clamp(80px,13vh,150px)}
 /* Nacho, 29/10: igual para los dos. El nombre más chico todavía; el rol a la derecha y abajo del apellido */
-.persona .nombre{display:flex;align-items:flex-end;flex-wrap:wrap;gap:.1em 1.4em;margin-bottom:clamp(18px,3vh,34px)}
+.persona .nombre{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:clamp(18px,3vh,34px)}     /* Nacho, 3/11: como en el teléfono, el rol abajo del nombre */
 .persona .nombre h2{font-size:clamp(2.2rem,7vw,7rem)}
 .persona .nombre h2 small{display:block;font-size:max(12px,.22em);letter-spacing:-.01em;margin-bottom:.25em}
 .persona .nombre .rotulo{color:var(--ink2);font-weight:500;padding-bottom:.1em}
@@ -435,13 +465,17 @@ html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
 .pieza:hover .t,.pieza:focus-visible .t{color:var(--rojo)}
 
 /* los dos: la lista de trabajos a la izquierda (un poco más chica que antes) y la foto a la derecha, entera */
-.persona .cuerpo{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(20px,6vw,90px);align-items:end}
+/* Nacho, 3/11: la compu toma el diseño del teléfono. Sin lista: la foto grande y al lado el rompecabezas, a la misma altura */
+.persona .cuerpo{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:10px;align-items:stretch}
+.persona .cuerpo .foto{position:relative;overflow:hidden}
+.persona .cuerpo .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.persona .cuerpo .collage{margin-top:0}
 .persona .lista .pieza{display:grid;grid-template-columns:minmax(110px,28%) minmax(0,1fr);gap:clamp(12px,1.8vw,22px);align-items:center;
   padding:clamp(10px,1.3vh,15px) 0;border-top:1px solid var(--linea)}
 .persona .lista .pieza:last-child{border-bottom:1px solid var(--linea)}
 .persona .lista .pieza .t,.persona .lista .pieza .cli{font-size:clamp(1rem,1.55vw,1.55rem)}
 .persona .lista .pendiente{margin-bottom:clamp(18px,3vh,30px)}
-#nacho .cuerpo{grid-template-columns:minmax(0,6fr) minmax(0,5fr)}      /* su foto es apaisada */
+#nacho .cuerpo .foto img{object-position:62% 50%}     /* su foto es apaisada: en la caja alta queda él señalando */
 
 /* más fotos, de otros rodajes (Nacho, 29/10): un rompecabezas de tamaños distintos que cierra en un rectángulo de 6 × 4 */
 .collage{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));aspect-ratio:6/4;gap:10px;margin-top:clamp(18px,3vw,40px)}
@@ -461,9 +495,10 @@ html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
 
 @media(max-width:760px){
   .persona .nombre{gap:6px 1em}
-  .persona .cuerpo,#nacho .cuerpo{grid-template-columns:1fr;gap:26px}
-  .persona .foto{order:-1}
-  #josue .foto{width:68%}
+  .persona .cuerpo,#nacho .cuerpo{grid-template-columns:1fr;gap:6px}
+  .persona .cuerpo .foto img{position:static;height:auto}
+  #josue .foto{width:68%;margin-bottom:20px}
+  #nacho .foto{margin-bottom:20px}
   .collage{gap:6px}
   .resto .pieza{grid-template-columns:minmax(120px,34%) minmax(0,1fr)}
 }
@@ -477,23 +512,23 @@ html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
 <div class="capa-arriba" aria-hidden="true"></div>
 <nav class="barra rotulo">
   <span class="izq"><span class="iso" aria-hidden="true"><img class="b" src="img/iso-blanco.png" alt=""><img class="c" src="img/iso-color.png" alt=""></span><a href="index.html"><img class="lt" src="img/logotipo-blanco.png" alt="PISTACHO — volver al inicio"></a></span>
-  <span class="der"><a class="volver" href="index.html#casabutik">← Trabajos</a><a class="hablar rotulo" href="https://wa.me/5491165057968" target="_blank" rel="noopener">Hablá con nosotros</a></span>
+  <span class="der"><a class="volver" href="index.html#casabutik">← Trabajos</a><a class="hablar" href="https://wa.me/5491165057968" target="_blank" rel="noopener" aria-label="Hablá con nosotros por WhatsApp"><svg class="wa" viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M17 2.91C16.08 1.98 14.99 1.25 13.79.75 12.58.25 11.29 0 9.99 0 4.53 0 .08 4.45.08 9.91c0 1.75.46 3.45 1.32 4.95L0 20l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01ZM9.99 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.02 4.54-3.68 8.23-8.22 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.07-.11-.22-.16-.47-.28Z"/></svg></a></span>
 </nav>
 <button class="burguer" id="burguer" type="button" aria-label="Abrir el menú" aria-expanded="false" aria-controls="menu"><i><span></span><span></span><span></span></i></button>
 <div class="menu" id="menu" data-tab="trabajos" role="dialog" aria-label="Menú" aria-hidden="true">
   <ul class="pestanas">
     <li><button type="button" data-tab="trabajos" style="--c:#f0483c" class="on">Trabajos</button></li>
-    <li><button type="button" data-tab="socios" style="--c:#00a878">Socios</button></li>
+    <li><button type="button" data-tab="socios" style="--c:#00a878">Nosotros</button></li>
     <li><button type="button" data-tab="clientes" style="--c:#48b4e4">Clientes</button></li>
     <li><button type="button" data-tab="contacto" style="--c:#00609c">Contacto</button></li>
   </ul>
   <ul class="panel on" data-panel="trabajos">
-      <li style="--i:0"><a href="simplicity.html" data-previa="media/menu-simplicity.mp4" data-poster="img/poster-simplicity.jpg">«Lo quiero todo»</a><small>Simplicity · 2026</small></li>
-      <li style="--i:1"><a href="telecentro.html" data-previa="media/telecentro.mp4" data-poster="img/poster-telecentro.jpg">«Back to Activities»</a><small>Telecentro · 2024</small></li>
-      <li style="--i:2"><a href="casabutik.html" data-previa="media/casabutik.mp4" data-poster="img/poster-casabutik.jpg">Campaña de lanzamiento</a><small>Casabutik · 2025</small></li>
-      <li style="--i:3"><a href="simplicity-2024.html" data-previa="media/simplicity-2024.mp4" data-poster="img/poster-simplicity-2024.jpg">«El Regalo Ideal»</a><small>Simplicity · 2024</small></li>
-      <li style="--i:4"><a href="river.html" data-previa="media/river.mp4" data-poster="img/poster-river.jpg">«Socios: Primer día»</a><small>River · 2025</small></li>
-      <li style="--i:5"><a href="cabify.html" data-previa="media/cabify.mp4" data-poster="img/poster-cabify.jpg">«8M»</a><small>Cabify · 2024</small></li>
+      <li style="--i:0"><a href="simplicity.html" data-previa="media/menu-simplicity.mp4" data-poster="img/poster-simplicity.jpg">Lo quiero todo</a><small>Simplicity · 2026</small></li>
+      <li style="--i:1"><a href="telecentro.html" data-previa="media/telecentro.mp4" data-poster="img/poster-telecentro.jpg">Back to Activities</a><small>Telecentro · 2024</small></li>
+      <li style="--i:2"><a href="casabutik.html" data-previa="media/casabutik.mp4" data-poster="img/poster-casabutik.jpg">Lanzamiento 2025</a><small>Casabutik · 2025</small></li>
+      <li style="--i:3"><a href="simplicity-2024.html" data-previa="media/simplicity-2024.mp4" data-poster="img/poster-simplicity-2024.jpg">El Regalo Ideal</a><small>Simplicity · 2024</small></li>
+      <li style="--i:4"><a href="river.html" data-previa="media/river.mp4" data-poster="img/poster-river.jpg">Socios: Primer día</a><small>River · 2025</small></li>
+      <li style="--i:5"><a href="cabify.html" data-previa="media/cabify.mp4" data-poster="img/poster-cabify.jpg">8M</a><small>Cabify · 2024</small></li>
   </ul>
   <ul class="panel" data-panel="socios">
       <li style="--i:0"><a href="nosotros.html#josue" data-previa="" data-poster="img/socio-josu.jpg">Josué Sineiro</a><small>Socio fundador · Productor ejecutivo</small></li>
@@ -534,26 +569,26 @@ html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
   </ul>
   <div class="previa" id="previa"><video muted loop playsinline preload="none"></video></div>
   <div class="pie">
-    <p class="datos"><a href="mailto:info@bypistacho.com">info@bypistacho.com</a><span>Cine publicitario y contenido · Buenos Aires</span></p>
+    <p class="datos"><a href="mailto:info@bypistacho.com">info@bypistacho.com</a><span>Cine publicitario y contenido · Buenos&nbsp;Aires</span></p>
   </div>
 </div>
 <!-- ================= EL COMERCIAL ================= -->
 <header class="film">
-  <button class="plano" type="button" data-video="media/full-casabutik.mp4" data-video-chico="media/full-casabutik-chico.mp4" data-poster="img/poster-full-casabutik.jpg" data-cap="Casabutik — cápsula 1, Jarra" aria-label="Ver «Jarra» completo y con sonido">
+  <button class="plano" type="button" data-video="media/full-casabutik.mp4" data-video-chico="media/full-casabutik-chico.mp4" data-poster="img/poster-full-casabutik.jpg" data-cap="Casabutik — cápsula 1, Jarra" aria-label="Ver Jarra completo y con sonido">
     <video data-src="media/hero-casabutik.mp4" data-src-chico="media/hero-casabutik-chico.mp4" poster="img/poster-hero-casabutik.jpg" muted loop playsinline preload="none"></video>
     <span class="dur rotulo">Ver con sonido</span>
   </button>
   <div class="datos">
     <div>
-      <h1 class="display">Campaña de lanzamiento</h1>
+      <h1 class="display">Lanzamiento 2025</h1>
       <p class="cliente display">Casabutik</p>
     </div>
     <div class="ficha"><dl>
-      <dt>Dirección</dt><dd>Ignacio Jabiú</dd>
-      <dt>Producción</dt><dd>Josué Sineiro</dd>
-      <dt>Agencia</dt><dd>Freelo</dd>
-      <dt>Piezas</dt><dd>Jarra · Molinillo · Carbonator</dd>
-      <dt>Año</dt><dd>2025</dd>
+      <dt>Dirección</dt><dd><span>Ignacio Jabiú</span></dd>
+      <dt>Producción</dt><dd><span>Josué Sineiro</span></dd>
+      <dt>Agencia</dt><dd><span>Freelo</span></dd>
+      <dt>Piezas</dt><dd><span>Jarra</span><span>Molinillo</span><span>Carbonator</span></dd>
+      <dt>Año</dt><dd><span>2025</span></dd>
     </dl></div>
   </div>
 </header>
@@ -563,17 +598,17 @@ html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
   <h2 class="rotulo">Las tres cápsulas</h2>
   <div class="grilla">
     <figure>
-      <button class="plano" type="button" data-video="media/full-casabutik.mp4" data-video-chico="media/full-casabutik-chico.mp4" data-poster="img/poster-full-casabutik.jpg" data-cap="Casabutik — cápsula 1, Jarra" aria-label="Ver la cápsula «Jarra» completa">
+      <button class="plano" type="button" data-video="media/full-casabutik.mp4" data-video-chico="media/full-casabutik-chico.mp4" data-poster="img/poster-full-casabutik.jpg" data-cap="Casabutik — cápsula 1, Jarra" aria-label="Ver la cápsula Jarra completa">
         <video data-src="media/casabutik.mp4" data-src-chico="media/casabutik-chico.mp4" data-poster="img/poster-casabutik.jpg" muted loop playsinline preload="none"></video><span class="dur rotulo">Ver</span></button>
       <figcaption class="display">Jarra</figcaption>
     </figure>
     <figure>
-      <button class="plano" type="button" data-video="media/full-casabutik-molinillo.mp4" data-video-chico="media/full-casabutik-molinillo-chico.mp4" data-poster="img/poster-full-casabutik-molinillo.jpg" data-cap="Casabutik — cápsula 2, Molinillo" aria-label="Ver la cápsula «Molinillo» completa">
+      <button class="plano" type="button" data-video="media/full-casabutik-molinillo.mp4" data-video-chico="media/full-casabutik-molinillo-chico.mp4" data-poster="img/poster-full-casabutik-molinillo.jpg" data-cap="Casabutik — cápsula 2, Molinillo" aria-label="Ver la cápsula Molinillo completa">
         <video data-src="media/casabutik-molinillo.mp4" data-src-chico="media/casabutik-molinillo-chico.mp4" data-poster="img/poster-casabutik-molinillo.jpg" muted loop playsinline preload="none"></video><span class="dur rotulo">Ver</span></button>
       <figcaption class="display">Molinillo</figcaption>
     </figure>
     <figure>
-      <button class="plano" type="button" data-video="media/full-casabutik-carbonator.mp4" data-video-chico="media/full-casabutik-carbonator-chico.mp4" data-poster="img/poster-full-casabutik-carbonator.jpg" data-cap="Casabutik — cápsula 3, Carbonator" aria-label="Ver la cápsula «Carbonator» completa">
+      <button class="plano" type="button" data-video="media/full-casabutik-carbonator.mp4" data-video-chico="media/full-casabutik-carbonator-chico.mp4" data-poster="img/poster-full-casabutik-carbonator.jpg" data-cap="Casabutik — cápsula 3, Carbonator" aria-label="Ver la cápsula Carbonator completa">
         <video data-src="media/casabutik-carbonator.mp4" data-src-chico="media/casabutik-carbonator-chico.mp4" data-poster="img/poster-casabutik-carbonator.jpg" muted loop playsinline preload="none"></video><span class="dur rotulo">Ver</span></button>
       <figcaption class="display">Carbonator</figcaption>
     </figure>
@@ -753,11 +788,11 @@ html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
 <section class="otros fx">
   <h2 class="rotulo">Más trabajos</h2>
   <div class="fila">
-    <a href="simplicity.html"><span class="marco"><video data-src="media/simplicity.mp4" data-src-chico="media/simplicity-chico.mp4" data-poster="img/poster-simplicity.jpg" muted loop playsinline preload="none"></video></span><span class="display">«Lo quiero todo»</span><span class="cli display">Simplicity</span><small class="rotulo">Dirección <b>Ignacio Jabiú</b> · 2026</small></a>
-    <a href="telecentro.html"><span class="marco"><video data-src="media/telecentro.mp4" data-src-chico="media/telecentro-chico.mp4" data-poster="img/poster-telecentro.jpg" muted loop playsinline preload="none"></video></span><span class="display">«Back to Activities»</span><span class="cli display">Telecentro</span><small class="rotulo">Dirección <b>Santiago Fabrizio</b> · 2024</small></a>
-    <a href="simplicity-2024.html"><span class="marco"><video data-src="media/simplicity-2024.mp4" data-src-chico="media/simplicity-2024-chico.mp4" data-poster="img/poster-simplicity-2024.jpg" muted loop playsinline preload="none"></video></span><span class="display">«El Regalo Ideal»</span><span class="cli display">Simplicity</span><small class="rotulo">Dirección <b>Ignacio Jabiú</b> · 2024</small></a>
-    <a href="river.html"><span class="marco entero"><video data-src="media/river.mp4" data-src-chico="media/river-chico.mp4" data-poster="img/poster-river.jpg" muted loop playsinline preload="none"></video></span><span class="display">«Socios: Primer día»</span><span class="cli display">River</span><small class="rotulo">Dirección <b>Ignacio Jabiú y Josué Sineiro</b> · 2025</small></a>
-    <a href="cabify.html"><span class="marco"><video data-src="media/cabify.mp4" data-src-chico="media/cabify-chico.mp4" data-poster="img/poster-cabify.jpg" muted loop playsinline preload="none"></video></span><span class="display">«8M»</span><span class="cli display">Cabify</span><small class="rotulo">Dirección <b>Ignacio Jabiú</b> · 2024</small></a>
+    <a href="simplicity.html"><span class="marco"><video data-src="media/simplicity.mp4" data-src-chico="media/simplicity-chico.mp4" data-poster="img/poster-simplicity.jpg" muted loop playsinline preload="none"></video></span><span class="display">Lo quiero todo</span><span class="cli display">Simplicity</span><small class="rotulo">Dirección <b>Ignacio Jabiú</b> · 2026</small></a>
+    <a href="telecentro.html"><span class="marco"><video data-src="media/telecentro.mp4" data-src-chico="media/telecentro-chico.mp4" data-poster="img/poster-telecentro.jpg" muted loop playsinline preload="none"></video></span><span class="display">Back to Activities</span><span class="cli display">Telecentro</span><small class="rotulo">Dirección <b>Santiago Fabrizio</b> · 2024</small></a>
+    <a href="simplicity-2024.html"><span class="marco"><video data-src="media/simplicity-2024.mp4" data-src-chico="media/simplicity-2024-chico.mp4" data-poster="img/poster-simplicity-2024.jpg" muted loop playsinline preload="none"></video></span><span class="display">El Regalo Ideal</span><span class="cli display">Simplicity</span><small class="rotulo">Dirección <b>Ignacio Jabiú</b> · 2024</small></a>
+    <a href="river.html"><span class="marco entero"><video data-src="media/river.mp4" data-src-chico="media/river-chico.mp4" data-poster="img/poster-river.jpg" muted loop playsinline preload="none"></video></span><span class="display">Socios: Primer día</span><span class="cli display">River</span><small class="rotulo">Dirección <i class="varios"><b>Ignacio Jabiú</b><b>Josué Sineiro</b></i> · 2025</small></a>
+    <a href="cabify.html"><span class="marco"><video data-src="media/cabify.mp4" data-src-chico="media/cabify-chico.mp4" data-poster="img/poster-cabify.jpg" muted loop playsinline preload="none"></video></span><span class="display">8M</span><span class="cli display">Cabify</span><small class="rotulo">Dirección <b>Ignacio Jabiú</b> · 2024</small></a>
   </div>
 </section>
 </main>
@@ -767,7 +802,7 @@ html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
   <div class="velo"></div>
   <div class="marca-final fx lento">
     <img src="img/isologo.png" alt="PISTACHO" width="3200" height="488" loading="lazy">
-    <p class="rotulo">Cine publicitario y contenido · Buenos Aires</p>
+    <p class="rotulo">Cine publicitario y contenido · Buenos&nbsp;Aires</p>
   </div>
   <div class="datos-final rotulo">
     <a href="mailto:info@bypistacho.com">info@bypistacho.com</a>
@@ -786,6 +821,8 @@ html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
 
 <script>
 const root=document.documentElement; root.classList.add('js');
+// Nacho y Josué, 5/11: la capa de arriba aparece recién cuando se scrollea
+{ let ib=null; const bajo=()=>{ const b=scrollY>40; if(b!==ib){ ib=b; root.classList.toggle('bajo',b) } }; addEventListener('scroll',bajo,{passive:true}); bajo() }
 try{ sessionStorage.setItem('pist-visto','1') }catch(_){}        // la entrada de la home se ve una sola vez por pestaña
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const ss=(p,a,b)=>{const t=clamp((p-a)/(b-a),0,1);return t*t*(3-2*t)};   // smoothstep
@@ -957,19 +994,21 @@ addEventListener('keydown',e=>{ if(e.key==='Escape'&&cerrar()) e.stopImmediatePr
     else { pvv.pause(); pvv.removeAttribute('src'); pvv.dataset.puesta=''; pvv.load() }
     pv.classList.add('on');
   }
-  function abrir(){
+  function abrir(conPuntero){
     pausados=[...document.querySelectorAll('video')].filter(v=>v!==pvv&&!v.paused); pausados.forEach(v=>v.pause());
     mn.classList.add('abierto'); mn.setAttribute('aria-hidden','false'); root.classList.add('menu-abierto');
     bg.classList.add('x'); bg.setAttribute('aria-expanded','true'); bg.setAttribute('aria-label','Cerrar el menú');
     const t=tabs.find(b=>b.classList.contains('on'))||tabs[0];
-    pestana(t.dataset.tab); t.focus();
+    // Nacho, 3/11: con el dedo o el mouse el foco va al menú entero, no a «Trabajos» (se veía el recuadro blanco del foco). Con teclado, a la pestaña
+    pestana(t.dataset.tab); if(conPuntero) mn.focus({preventScroll:true}); else t.focus();
   }
   function cerrarMenu(){
     mn.classList.remove('abierto'); mn.setAttribute('aria-hidden','true'); root.classList.remove('menu-abierto');
     bg.classList.remove('x'); bg.setAttribute('aria-expanded','false'); bg.setAttribute('aria-label','Abrir el menú');
     pvv.pause(); pausados.forEach(v=>{ if(quiere.has(v)) v.play().catch(()=>{}) }); pausados=[];
   }
-  bg.addEventListener('click',()=>mn.classList.contains('abierto')?cerrarMenu():abrir());
+  mn.tabIndex=-1;
+  bg.addEventListener('click',e=>mn.classList.contains('abierto')?cerrarMenu():abrir(e.detail>0||e.pointerType));
   tabs.forEach(b=>b.addEventListener('click',()=>pestana(b.dataset.tab)));
   mn.querySelectorAll('[data-poster]').forEach(a=>{ a.addEventListener('mouseenter',()=>previa(a)); a.addEventListener('focus',()=>previa(a)) });
   mn.querySelectorAll('.panel a').forEach(a=>a.addEventListener('click',()=>cerrarMenu()));
