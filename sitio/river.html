@@ -289,6 +289,7 @@ html.menu-abierto{overflow:hidden}
 .menu .panel:has(li:hover) li:hover>small{opacity:.8}
 .menu .panel.nombres{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 24px;justify-items:end}
 .menu .panel.nombres .dato{font-size:clamp(1rem,1.7vw,1.6rem)}
+.menu .panel li:hover>.dato{transform:none !important}     /* Nacho y Josué, 10/11: los nombres de clientes no llevan a ningún lado: se resaltan con el color, sin agrandarse */
 .menu .panel.nombres li.chica .dato{font-size:clamp(.78rem,1vw,.95rem);font-weight:400}
 .menu .panel.nombres li.chica.ini{margin-top:clamp(10px,2vh,22px)}
 .menu .previa{grid-column:1;grid-row:1;align-self:center;justify-self:center;--h:min(38vw,544px,calc(100vh - 300px));height:var(--h);width:calc(var(--h) * .625);border-radius:50%;overflow:hidden;     /* el óvalo del logo, parado (Rolo, 28/10) */
@@ -361,7 +362,7 @@ html.modal{overflow:hidden}
 .box .epi{position:absolute;bottom:22px;left:26px;opacity:.7}
 
 /* ajustes sobre el menú heredado */
-.burguer{left:calc(var(--gut) - 11px);right:auto;mix-blend-mode:normal}     /* Nacho, 3/11: a la izquierda; el logo al centro y WhatsApp a la derecha */
+.burguer{left:auto;right:calc(var(--gut) - 11px);mix-blend-mode:normal}     /* Nacho y Josué, 10/11: el menú vuelve a la derecha y WhatsApp pasa a la izquierda (3/11 era al revés) */
 html.claro:not(.menu-abierto) .burguer span{background:#111}
 .menu.abierto{animation:enfoca .5s ease}
 .menu .pie .reel:hover{color:var(--rojo)}
@@ -397,10 +398,10 @@ html.claro:not(.menu-abierto) .burguer:focus-visible{outline-color:#111 !importa
    Rite era la referencia del blur, no del diseño. No está al abrir la página: aparece cuando se scrollea (html.bajo, en comun.js).
    El menú y WhatsApp quedan fijos desde el principio. (La barra flotante del 3/11, medida en riteskincare.com, quedó en el archivo) */
 :root{--barra-c:30px}     /* el centro vertical de la capa: ahí se alinean el menú, el logo y WhatsApp */
-.capa-arriba{position:fixed;left:0;right:0;top:0;height:92px;z-index:48;pointer-events:none;opacity:0;transition:opacity .4s;
-  background:linear-gradient(to bottom,rgba(0,0,0,.88),rgba(0,0,0,.7) 40%,rgba(0,0,0,0));
+.capa-arriba{position:fixed;left:0;right:0;top:0;height:118px;z-index:48;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:linear-gradient(to bottom,rgba(0,0,0,.66),rgba(0,0,0,.5) 45%,rgba(0,0,0,0));     /* Nacho y Josué, 10/11: más alta (PISTACHO quedaba al borde) y menos oscura */
   -webkit-backdrop-filter:blur(15px);backdrop-filter:blur(15px);
-  -webkit-mask-image:linear-gradient(to bottom,#000 50%,transparent);mask-image:linear-gradient(to bottom,#000 50%,transparent)}     /* el blur también se esfuma, sin borde abajo */
+  -webkit-mask-image:linear-gradient(to bottom,#000 50%,transparent);mask-image:linear-gradient(to bottom,#000 58%,transparent)}     /* el blur también se esfuma, sin borde abajo */
 html.bajo .capa-arriba{opacity:1}
 /* sobre la banda clara de clientes la capa se vuelve clara, para que los logos que corren no se crucen con el menú */
 html.claro:not(.menu-abierto) .capa-arriba{background:linear-gradient(to bottom,rgba(244,244,242,.96),rgba(244,244,242,.86) 45%,rgba(244,244,242,0))}
@@ -416,7 +417,7 @@ html.en-cierre .capa-arriba{opacity:0}
 html.claro:not(.menu-abierto) .marca .iso .c{filter:none}
 .hablar{color:#fff;text-decoration:none;font-weight:500;white-space:nowrap;transition:color .3s,opacity .3s}
 .hablar:hover,.hablar:focus-visible{color:#25D366}     /* Nacho y Josué, 5/11: verde WhatsApp, no rojo */
-body > .hablar{position:fixed;top:calc(var(--barra-c) - 20px);right:calc(var(--gut) - 8px);z-index:89}
+body > .hablar,.barra .hablar{position:fixed;top:calc(var(--barra-c) - 20px);left:calc(var(--gut) - 8px);right:auto;z-index:89}
 .hablar{display:grid;place-items:center;width:40px;height:40px}
 .hablar .wa{width:22px;height:22px;display:block}
 html.claro:not(.menu-abierto) body > .hablar{color:#111}
@@ -424,7 +425,7 @@ html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
 .barra .izq,.barra .der{display:flex;align-items:center;gap:22px}
 .barra .izq{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}     /* Nacho, 3/11: el logo al centro */
 .barra .izq{gap:0}     /* Nacho, 29/10: el isotipo pegado a la palabra, igual que en la home */
-.barra .der{margin-left:auto;margin-right:-8px}
+.barra .der{margin-left:auto;margin-right:44px}     /* «← Trabajos» queda al lado del menú */
 @media(max-width:520px){
   .barra .volver{display:none}                 /* en el teléfono no entran las tres cosas: «volver» está en el menú y en el logo */
   .iso img{height:16px !important}
@@ -443,15 +444,50 @@ html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
 /* ================= NOSOTROS =================
    La idea: debajo de cada nombre no hay bio, corre lo que filmó. Nacho adelante y con los planos grandes;
    Josué con la lista. Cada pieza lleva a la página de su campaña. (Se suma a obra.css.) */
-.gente{padding-top:clamp(84px,12vh,118px)}
-.persona{padding:0 var(--gut) clamp(80px,13vh,150px)}
-/* Nacho, 29/10: igual para los dos. El nombre más chico todavía; el rol a la derecha y abajo del apellido */
-.persona .nombre{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:clamp(18px,3vh,34px)}     /* Nacho, 3/11: como en el teléfono, el rol abajo del nombre */
-.persona .nombre h2{font-size:clamp(2.2rem,7vw,7rem)}
-.persona .nombre h2 small{display:block;font-size:max(12px,.22em);letter-spacing:-.01em;margin-bottom:.25em}
-.persona .nombre .rotulo{color:var(--ink2);font-weight:500;padding-bottom:.1em}
-.persona .foto{background:#0b0b0b}
-.persona .foto img{width:100%;height:auto}
+.gente{padding-top:clamp(96px,14vh,140px)}
+/* Nacho y Josué, 10/11: arriba el texto de PISTACHO; después cada socio en un bloque, un tercio para el nombre y la bio,
+   dos tercios para las fotos. (El collage del 3/11 y la primera versión de esto quedaron en Piezas/_archivo/web) */
+.manifiesto,.persona{scroll-margin-top:90px;display:grid;gap:clamp(24px,3.4vw,64px);padding:0 var(--gut) clamp(64px,10vh,120px)}
+/* Nacho, 10/11 (2ª vuelta): el título centrado, en una línea, y el texto abajo con el mismo ancho que el título */
+.manifiesto{grid-template-columns:min-content;justify-content:center;text-align:center;row-gap:clamp(20px,2.6vw,44px)}
+.manifiesto h1{font-size:clamp(2rem,4vw,4.2rem);white-space:nowrap}     /* Nacho, 10/11 (3ª vuelta): un poquito más chico */
+/* Nacho, 10/11: los colores del pistachito sobre las letras, como el isologo de la barra cuando se le pasa el mouse. Rolo, 10/11: que el color
+   acompañe al mouse. Una franja con los cinco colores, en el orden de las hojas, centrada donde está el mouse (--x) y con el ancho que
+   le da nosotros.js (--w: 0 es todo blanco). El fondo se extiende un poco arriba y abajo para que no corte las letras */
+.manifiesto h1{--x:50%;--w:0%;padding:.12em 0;margin:-.12em 0;
+  background:linear-gradient(90deg,#fff calc(var(--x) - var(--w)),#f0483c 0 calc(var(--x) - var(--w) * .6),#fcf048 0 calc(var(--x) - var(--w) * .2),
+    #00a878 0 calc(var(--x) + var(--w) * .2),#48b4e4 0 calc(var(--x) + var(--w) * .6),#00609c 0 calc(var(--x) + var(--w)),#fff 0);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.quien h2 small{display:block}
+.manifiesto .texto{color:var(--ink);max-width:none}     /* Nacho, 10/11 (3ª vuelta): del mismo tamaño que la bio de cada uno */
+.manifiesto .texto p+p{margin-top:1em}
+.quien h2{font-size:clamp(2rem,3.6vw,3.9rem)}
+.quien h2 small{font-weight:500;font-size:max(13px,.3em);letter-spacing:-.01em;line-height:1;margin-bottom:.3em}
+.quien .rotulo{display:block;margin:14px 0 clamp(14px,2vh,22px);color:var(--ink2);font-weight:500}
+.quien .texto{max-width:44ch}
+/* Nacho, 10/11 (2ª vuelta): un solo bloque. Las fotos terminan donde termina el texto (la caja no aporta alto: toma el del texto)
+   y la grilla se elige según la forma que le queda, para que ninguna foto salga finita. Josué con las fotos a la derecha; Ignacio, al revés */
+.persona{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}
+.manifiesto,#josue{padding-bottom:clamp(96px,15vh,180px)}     /* Nacho, 10/11 (3ª vuelta): más aire entre el texto de arriba y Josué, y entre Josué e Ignacio */
+#nacho{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
+#nacho .fotos-caja{grid-column:1;grid-row:1}
+#nacho .quien{grid-column:2;grid-row:1}
+.fotos-caja{container-type:size;min-height:0}
+.fotos{display:grid;width:100%;height:100%;gap:8px;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr))}
+.fotos img{width:100%;height:100%;min-height:0;object-fit:cover;background:#0b0b0b}
+#josue .fotos{grid-template-areas:"m m a b c" "m m d e f"}
+#nacho .fotos{grid-template-areas:"a b c m m" "d e f m m"}
+@container (max-aspect-ratio:9/5){
+  .fotos{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr))}
+  #josue .fotos{grid-template-areas:"m m a a" "m m b c" "d e f f"}
+  #nacho .fotos{grid-template-areas:"a b m m" "c c m m" "d e f f"}
+}
+@container (max-aspect-ratio:1/1){
+  .fotos{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr))}
+  #josue .fotos{grid-template-areas:"m m b" "m m c" "a a d" "e f f"}
+  #nacho .fotos{grid-template-areas:"a m m" "b m m" "c c d" "e f f"}
+}
+
 .pendiente{border:1px dashed var(--rojo);color:var(--rojo);padding:14px 16px;font-size:15px;line-height:1.45;max-width:34ch}
 /* una pieza: el plano corriendo, el título, el cliente y qué hizo él */
 .pieza{display:block;text-decoration:none}
@@ -464,25 +500,6 @@ html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
 .pieza small{display:block;margin-top:8px;color:var(--ink2)}
 .pieza:hover .t,.pieza:focus-visible .t{color:var(--rojo)}
 
-/* los dos: la lista de trabajos a la izquierda (un poco más chica que antes) y la foto a la derecha, entera */
-/* Nacho, 3/11: la compu toma el diseño del teléfono. Sin lista: la foto grande y al lado el rompecabezas, a la misma altura */
-.persona .cuerpo{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:10px;align-items:stretch}
-.persona .cuerpo .foto{position:relative;overflow:hidden}
-.persona .cuerpo .foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.persona .cuerpo .collage{margin-top:0}
-.persona .lista .pieza{display:grid;grid-template-columns:minmax(110px,28%) minmax(0,1fr);gap:clamp(12px,1.8vw,22px);align-items:center;
-  padding:clamp(10px,1.3vh,15px) 0;border-top:1px solid var(--linea)}
-.persona .lista .pieza:last-child{border-bottom:1px solid var(--linea)}
-.persona .lista .pieza .t,.persona .lista .pieza .cli{font-size:clamp(1rem,1.55vw,1.55rem)}
-.persona .lista .pendiente{margin-bottom:clamp(18px,3vh,30px)}
-#nacho .cuerpo .foto img{object-position:62% 50%}     /* su foto es apaisada: en la caja alta queda él señalando */
-
-/* más fotos, de otros rodajes (Nacho, 29/10): un rompecabezas de tamaños distintos que cierra en un rectángulo de 6 × 4 */
-.collage{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));aspect-ratio:6/4;gap:10px;margin-top:clamp(18px,3vw,40px)}
-.collage img{width:100%;height:100%;object-fit:cover;background:#0b0b0b;min-height:0}
-#josue .collage{grid-template-areas:"a a b b b c" "a a b b b c" "a a d d e e" "a a f f e e"}
-#nacho .collage{grid-template-areas:"a a b b c c" "a a b b c c" "a a b b d d" "e e f f d d"}
-
 /* ---- lo que no tiene crédito personal: sigue siendo una salida ---- */
 .resto{padding:0 var(--gut) clamp(70px,12vh,130px)}
 .resto h2{color:var(--ink3);margin-bottom:6px}
@@ -494,12 +511,15 @@ html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
 .film .dirige a:hover,.film .dirige a:focus-visible,.ficha dd a:hover,.ficha dd a:focus-visible,.director a:hover,.director a:focus-visible{color:var(--rojo)}
 
 @media(max-width:760px){
-  .persona .nombre{gap:6px 1em}
-  .persona .cuerpo,#nacho .cuerpo{grid-template-columns:1fr;gap:6px}
-  .persona .cuerpo .foto img{position:static;height:auto}
-  #josue .foto{width:68%;margin-bottom:20px}
-  #nacho .foto{margin-bottom:20px}
-  .collage{gap:6px}
+  /* en el teléfono, una columna: el título centrado en dos líneas, y cada socio con el texto y abajo la grilla de 3 × 4 */
+  .manifiesto{grid-template-columns:minmax(0,1fr)}
+  .manifiesto h1{white-space:normal}
+  .persona,#nacho{grid-template-columns:1fr;gap:22px}
+  #nacho .fotos-caja,#nacho .quien{grid-column:auto;grid-row:auto}
+  .fotos-caja{container-type:normal}
+  .fotos{height:auto;aspect-ratio:3/4;gap:6px;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr))}
+  #josue .fotos{grid-template-areas:"m m b" "m m c" "a a d" "e f f"}
+  #nacho .fotos{grid-template-areas:"a m m" "b m m" "c c d" "e f f"}
   .resto .pieza{grid-template-columns:minmax(120px,34%) minmax(0,1fr)}
 }
 
@@ -531,8 +551,8 @@ html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
       <li style="--i:5"><a href="cabify.html" data-previa="media/cabify.mp4" data-poster="img/poster-cabify.jpg">8M</a><small>Cabify · 2024</small></li>
   </ul>
   <ul class="panel" data-panel="socios">
-      <li style="--i:0"><a href="nosotros.html#josue" data-previa="" data-poster="img/socio-josu.jpg">Josué Sineiro</a><small>Socio fundador · Productor ejecutivo</small></li>
-      <li style="--i:1"><a href="nosotros.html#nacho" data-previa="" data-poster="img/socio-nacho.jpg">Ignacio Jabiú</a><small>Socio fundador · Director creativo</small></li>
+      <li style="--i:0"><a href="nosotros.html#ir-josue" data-previa="" data-poster="img/socio-josu.jpg">Josué Sineiro</a><small>Socio fundador · Productor ejecutivo</small></li>
+      <li style="--i:1"><a href="nosotros.html#ir-nacho" data-previa="" data-poster="img/socio-nacho.jpg">Ignacio Jabiú</a><small>Socio fundador · Director creativo</small></li>
   </ul>
   <ul class="panel nombres" data-panel="clientes">
       <li style="--i:0"><span class="dato">Simplicity</span></li>
@@ -832,7 +852,12 @@ addEventListener('keydown',e=>{ if(e.key==='Escape'&&cerrar()) e.stopImmediatePr
   }
   mn.tabIndex=-1;
   bg.addEventListener('click',e=>mn.classList.contains('abierto')?cerrarMenu():abrir(e.detail>0||e.pointerType));
-  tabs.forEach(b=>b.addEventListener('click',()=>pestana(b.dataset.tab)));
+  // Rolo, 10/11: «Nosotros» abre a Josué e Ignacio; tocarlo otra vez lleva a la página de Nosotros, arriba de todo
+  tabs.forEach(b=>b.addEventListener('click',()=>{
+    if(b.dataset.tab==='socios'&&b.classList.contains('on')){
+      if(/nosotros(\.html)?$/.test(location.pathname)){ cerrarMenu(); scrollTo({top:0,behavior:'smooth'}) } else location.href='nosotros.html';
+      return }
+    pestana(b.dataset.tab) }));
   mn.querySelectorAll('[data-poster]').forEach(a=>{ a.addEventListener('mouseenter',()=>previa(a)); a.addEventListener('focus',()=>previa(a)) });
   mn.querySelectorAll('.panel a').forEach(a=>a.addEventListener('click',()=>cerrarMenu()));
   addEventListener('keydown',e=>{ if(e.key==='Escape'&&mn.classList.contains('abierto')){ cerrarMenu(); bg.focus() } });
