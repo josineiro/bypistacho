@@ -2,6 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<link rel="preload" as="image" href="img/poster-reel-o.jpg" media="(max-width:760px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/poster-reel.jpg" media="(min-width:761px)" fetchpriority="high">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PISTACHO · Cine publicitario</title>
 <meta name="description" content="Productora de cine publicitario y contenido de Buenos Aires. Dirige Ignacio Jabiú, produce Josué Sineiro. Trabajos para Simplicity, Telecentro y Casabutik.">
@@ -600,10 +602,10 @@ html.menu-abierto .hablar,html.modal .hablar{opacity:0;pointer-events:none}
     <div class="anillo"></div>
 
     <!-- Nacho, 29/10: apenas girados. 30/10: en la compu rozan el borde del óvalo (data-ang: dónde, en grados; home.js los ubica) -->
-    <div class="stk" data-ang="-150" data-angm="-140" data-dx="-1" data-dy="-.5" data-depth="34" style="left:2.6vw;top:13vh;width:7.6vw;--rot:-12deg;--dl:0s"><img src="stk/stk-20.png" alt=""></div>
+    <div class="stk" data-ang="-150" data-angm="-140" data-dx="-1" data-dy="-.5" data-depth="34" style="left:2.6vw;top:13vh;width:7.6vw;--rot:-12deg;--dl:0s"><img src="stk/stk-20.webp" alt=""></div>
     <div class="stk orbe" data-ang="-28" data-dx="1" data-dy="-.6" data-depth="26" style="right:3vw;top:12vh;width:8vw;--rot:6deg;--dl:-3s"><div class="bola"><video data-src="media/orbe-b.mp4" poster="img/orbe-b.jpg" muted loop playsinline preload="none"></video></div></div>
     <div class="stk orbe" data-ang="155" data-dx="-1" data-dy=".45" data-depth="38" style="left:3vw;bottom:7vh;width:9vw;--rot:-7deg;--dl:-1s"><div class="bola"><video data-src="media/orbe-a.mp4" poster="img/orbe-a.jpg" muted loop playsinline preload="none"></video></div></div>
-    <div class="stk s2" data-ang="22" data-angm="35" data-dx="1" data-dy=".3" data-depth="22" style="right:3.4vw;bottom:9vh;width:7vw;--rot:9deg;--dl:-2s"><img src="stk/stk-23.png" alt=""></div>
+    <div class="stk s2" data-ang="22" data-angm="35" data-dx="1" data-dy=".3" data-depth="22" style="right:3.4vw;bottom:9vh;width:7vw;--rot:9deg;--dl:-2s"><img src="stk/stk-23.webp" alt=""></div>
 
     <div class="abajo">
       <h1><img src="img/logotipo-blanco.png" alt="PISTACHO"></h1>
@@ -804,7 +806,7 @@ function fuente(v,url,conSonido,opc){
   const poner=u=>{ if(!u||v.dataset.puesta!==url) return false; v.src=u; v.load(); return true };
   // Sin pedidos por rango, el navegador no entrega dos veces a la vez el mismo archivo: si otro video de la página ya lo está
   // bajando (el reel del círculo, el plano de una tarjeta), el segundo se queda esperando para siempre. El sufijo lo vuelve otro pedido.
-  if(!WEBKIT&&!(opc.partes>1)) return Promise.resolve(poner(url+(opc.sufijo||v.dataset.sufijo||'')));
+  if(!(opc.partes>1)) return Promise.resolve(poner(url+(opc.sufijo||v.dataset.sufijo||'')));
   return bajar(url,opc.partes,opc.peso,opc.progreso).then(poner);
 }
 let trabado=false;
@@ -863,7 +865,11 @@ document.querySelectorAll('.fx').forEach(el=>ioF.observe(el));
 let vIris=document.querySelector('.iris video'); const iris=document.querySelector('.iris');      // let: en pantallas grandes se cambia por el de 4K (abajo)
 mirarVideos(.45,v=>v===vIris||(CHICO&&v.closest('.orbe')));     // en el teléfono los círculos chicos no se muestran
 // el reel del iris está recortado en círculo: se mira el cuadro entero del hero, no el recorte
-new IntersectionObserver(es=>{ const e=es[es.length-1]; e.isIntersecting?arranca(vIris):soltar(vIris) },{threshold:.02})
+// 11/11: la foto de espera del óvalo va primero. El reel (9 a 14 MB) se pide cuando ella llegó, así no le saca ancho de banda
+// (en un 4G flojo la foto tardaba 14 s). Si la foto no llega en 2,5 s, el reel arranca igual
+const fotoIris=new Promise(r=>{ const im=new Image(); im.onload=im.onerror=r; im.src=CHICO?'img/poster-reel-o.jpg':'img/poster-reel.jpg'; setTimeout(r,2500) });
+let irisAVista=false;
+new IntersectionObserver(es=>{ const e=es[es.length-1]; irisAVista=e.isIntersecting; irisAVista?fotoIris.then(()=>{ if(irisAVista) arranca(vIris) }):soltar(vIris) },{threshold:.02})
   .observe(document.querySelector('#hero .pin'));
 /* las tiras de logos sólo corren a la vista */
 const ioP=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('quieta',!e.isIntersecting)));

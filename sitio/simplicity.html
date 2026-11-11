@@ -914,7 +914,7 @@ function fuente(v,url,conSonido,opc){
   const poner=u=>{ if(!u||v.dataset.puesta!==url) return false; v.src=u; v.load(); return true };
   // Sin pedidos por rango, el navegador no entrega dos veces a la vez el mismo archivo: si otro video de la página ya lo está
   // bajando (el reel del círculo, el plano de una tarjeta), el segundo se queda esperando para siempre. El sufijo lo vuelve otro pedido.
-  if(!WEBKIT&&!(opc.partes>1)) return Promise.resolve(poner(url+(opc.sufijo||v.dataset.sufijo||'')));
+  if(!(opc.partes>1)) return Promise.resolve(poner(url+(opc.sufijo||v.dataset.sufijo||'')));
   return bajar(url,opc.partes,opc.peso,opc.progreso).then(poner);
 }
 let trabado=false;

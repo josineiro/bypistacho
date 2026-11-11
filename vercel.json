@@ -3,5 +3,16 @@
   "installCommand": "",
   "buildCommand": "",
   "outputDirectory": "sitio",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/(img|stk|media)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    }
+  ]
 }
